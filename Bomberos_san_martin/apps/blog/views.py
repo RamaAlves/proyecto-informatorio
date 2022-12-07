@@ -5,6 +5,10 @@ def index(request):
 
     return render(request, 'index.html',)
 
+def nosotros(request):
+
+    return render(request, 'nosotros.html',)
+
 def contacto(request):
 
     return render(request, 'contacto.html',)
@@ -13,9 +17,9 @@ def aspirantes(request):
 
     return render(request, 'aspirantes.html',)
 
-def nosotros(request):
+def donacion(request):
 
-    return render(request, 'nosotros.html',)
+    return render(request, 'donacion.html',)
 
 def perfil(request):
 

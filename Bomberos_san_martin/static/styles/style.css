@@ -19,6 +19,10 @@ body{
   height: 60px;
 }
 
+.navbar .nav-item .nav-link{
+  font-size:1.1rem;
+}
+
 .banner{
   height: 300px;
   object-fit: cover;

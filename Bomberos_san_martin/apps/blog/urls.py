@@ -6,7 +6,8 @@ app_name = "blog"
 urlpatterns = [
     path('', views.index, name='index'),
     path('contacto', views.contacto, name='contacto'),
-    path('aspirantes', views.aspirantes, name='aspirantes'),
     path('nosotros', views.nosotros, name='nosotros'),
+    path('aspirantes', views.aspirantes, name='aspirantes'),
+    path('donacion', views.donacion, name='donacion'),
     path('perfil', views.perfil, name='perfil'), 
 ]
