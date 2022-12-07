@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% comment %} headers {% endcomment %}
+{% block styles %}{% endblock %}
+
+{% comment %} body {% endcomment %}
+{% comment %} navbar {% endcomment %}
+{% block nosotros %} active {% endblock %}
+
+{% comment %} contenido de pag {% endcomment %}
+{% block content %}
+
+
+<div class="jumbotron" >
+    <h1 class="text-center">SOBRE NOSOTROS</h1>
+</div>
+
+
+
+<div class="jumbotron card" style="padding: 40px;">
+    <h2>COMISION DIRECTIVA:</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card card-bombero">
+            <img src="static/images/logoProvisorio.jpg" class="card-img-top" alt="foto de bombero">
+            <div class="card-body">
+              <h5 class="card-title">Integrante de la comision directiva</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card card-bombero">
+            <img src="static/images/logoProvisorio.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Integrante de la comision directiva</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card card-bombero">
+            <img src="static/images/logoProvisorio.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Integrante de la comision directiva</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card card-bombero">
+            <img src="static/images/logoProvisorio.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Integrante de la comision directiva</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="jumbotron card" style="padding: 40px;">
+    <h2>JEFE DEL CUERPO DE BOMBEROS:</h2>
+    <div class="d-flex justify-content-center">
+        <div class="card" style="width: 34rem;">
+            <img src="static/images/logoProvisorio.jpg" class="card-img-top" alt="foto de bombero">
+            <div class="card-body">
+            <h5 class="card-title">Nombre del jefe de bomberos</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron card" style="padding: 40px;">
+    <h2>BOMBEROS:</h2>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card card-bombero">
+            <img src="static/images/logoProvisorio.jpg" class="card-img-top" alt="foto de bombero">
+            <div class="card-body">
+              <h5 class="card-title">Nombre de bombero</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card card-bombero">
+            <img src="static/images/logoProvisorio.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Nombre de bombero</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card card-bombero">
+            <img src="static/images/logoProvisorio.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Nombre de bombero</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card card-bombero">
+            <img src="static/images/logoProvisorio.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Nombre de bombero</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+<div class="jumbotron card" >
+    <div class="row">
+        <div class="col-4 ">
+          <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="list-mision-list" data-bs-toggle="list" href="#list-mision" role="tab" aria-controls="list-mision"><h2>MISION:</h2></a>
+            <a class="list-group-item list-group-item-action" id="list-vision-list" data-bs-toggle="list" href="#list-vision" role="tab" aria-controls="list-vision"><h2>VISION:</h2></a>
+            <a class="list-group-item list-group-item-action" id="list-objetivo-list" data-bs-toggle="list" href="#list-objetivo" role="tab" aria-controls="list-objetivo"><h2>OBJETIVO:</h2></a>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="list-mision" role="tabpanel" aria-labelledby="list-mision-list">
+                <p class="lead">
+                    Proteger la vida, el ambiente y el patrimonio del municipio de General
+                    Jose de San Martín Chaco, mediante la atención y gestión del riesgo en
+                    incendios, rescates, y otras emergencias, de manera segura, eficiente,
+                    con sentido de responsabilidad social, fundamentadas en la excelencia
+                    institucional del talento humano.
+                </p>
+            </div>
+            <div class="tab-pane fade" id="list-vision" role="tabpanel" aria-labelledby="list-vision-list">
+                <p class="lead">
+                    Para el año 2028 la Asociación de Bomberos Voluntarios de General San
+                    Martín contará con equipamientos de última tecnología, vehículos nuevos
+                    y un espacio físico propio donde nos permitirá mejorar la prestación del
+                    servicio
+                </p>
+            </div>
+            <div class="tab-pane fade" id="list-objetivo" role="tabpanel" aria-labelledby="list-objetivo-list">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <p class="lead">
+                            Preparar la respuesta y responder de manera efectiva y segura ante
+                            incendios y casos que requieran operaciones de rescate, así como en las
+                            demás situaciones de emergencia que se presenten en el municipio de
+                            General Jose de San Martín.
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="lead">
+                            Fortalecer las condiciones para proteger efectivamente vidas, bienes y
+                            ambiente.
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="lead">
+                            Ofrecer servicios que brinden a la comunidad seguridad humana,
+                            Industrial, protección de riesgo contra incendio, otros incidentes y
+                            eventos masivos.
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="lead">
+                            Asegurar el mejoramiento continuo de los procesos de la Institución,
+                            que garanticen la satisfacción de la comunidad.
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="lead">
+                            Fortalecer las competencias y la cultura organizacional.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+{% endblock %}
