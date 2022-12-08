@@ -63,4 +63,4 @@ env/
 .ropeproject
 *.sqlite3
 */migrations/*
-Bomberos_san_martin\apps\blog\migrations
+Bomberos_san_martin/apps/blog/migrations
