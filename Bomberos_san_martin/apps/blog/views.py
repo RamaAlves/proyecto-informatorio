@@ -33,13 +33,12 @@ def perfil(request):
 
 
 def crearPost(request):
-    post_form = PostForm()
+    
     if request.method == 'POST':
         post_form = PostForm(request.POST or None, request.FILES or None)
         if post_form.is_valid():
             post_form.save()
-            print(post_form)
-            return redirect('index')
+            return redirect('blog:index')
     else:
         post_form = PostForm()
     return render(request, 'post/crear_post.html', {'post_form': post_form})
