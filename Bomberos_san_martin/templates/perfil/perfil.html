@@ -1,0 +1,32 @@
+{% extends 'perfil/base_perfil.html' %}
+{% comment %} headers {% endcomment %}
+{% block styles %}{% endblock %}
+
+{% comment %} body {% endcomment %}
+{% comment %} navbar {% endcomment %}
+{% block perfil %} active {% endblock %}
+
+{% comment %} contenido de pag {% endcomment %}
+{% block content %}
+
+
+
+<div class="jumbotron text-center" style="padding: 40px;">
+    <h1>INGRESAR</h1>
+</div>
+
+<div class="card card-transparent">
+    <form method="POST" entycape="multipart/form-data">
+        {% csrf_token %}
+        <div class="card card-transparent">
+            <h5 class="card-header"></h5>
+            <div class="card-body">
+            </div>
+            <button type="submit">Guardar</button>
+            <a href="{% url 'blog:index' %}">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
