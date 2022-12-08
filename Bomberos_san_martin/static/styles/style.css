@@ -2,7 +2,7 @@
   --bg-navbar: #f1f1f1;
   --bg-button:#4c4c4d;
   --border-button:#4b4b4b;
-  --bg-page: #fcfcfc;
+  --bg-page: #4D4D4D;
 }
 
 body{
@@ -46,6 +46,9 @@ body{
   width:18rem;
 }
 
+.card-text .text-muted{
+  color:#fefefe;
+}
 /* .spinner-border{
   color define color de spin 
 } */
