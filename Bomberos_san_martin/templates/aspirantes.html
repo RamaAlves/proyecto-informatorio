@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% comment %} headers {% endcomment %}
+{% block styles %}{% endblock %}
+
+{% comment %} body {% endcomment %}
+{% comment %} navbar {% endcomment %}
+{% block aspirantes %} active {% endblock %}
+
+{% comment %} contenido de pag {% endcomment %}
+{% block content %}
+
+<div class="jumbotron" style="padding: 40px;">
+    <h1>Aspirantes</h1>
+</div>
+<div class="jumbotron card">
+    <h2>Carpeta a presentar para Pre-inscripción</h2>
+    <ul class="list-group">
+        <li class="list-group-item">
+            Fotocopia DNI actualizado ambos lados
+        </li>
+        <li class="list-group-item">
+            Certificado Psicofísico
+        </li>
+        <li class="list-group-item">
+            Certificado domicilio
+        </li>
+        <li class="list-group-item">
+            Certificado buena conducta
+        </li>
+        <li class="list-group-item">
+            Fotocopia del titulo nivel primario y/o niveles superiores
+        </li>
+        <li class="list-group-item">
+            Fotocopia de carnet de conducir (opcional)
+        </li>
+        <li class="list-group-item">
+            Cualquier otro dato que estime de interés adjuntar a la carpeta y
+            presentar al cuartel.
+        </li>
+    </ul>
+</div>
+
+
+{% endblock %}
