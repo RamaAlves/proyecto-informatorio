@@ -1,6 +1,6 @@
-{% extends 'perfil/base_perfil.html' %}
+{% extends 'base.html' %}
 {% comment %} headers {% endcomment %}
-{% block styles %}{% endblock %}
+{% block styles %}<link rel="stylesheet" href="static/styles/perfil.css">{% endblock %}
 
 {% comment %} body {% endcomment %}
 {% comment %} navbar {% endcomment %}
@@ -12,11 +12,11 @@
 
 
 <div class="jumbotron text-center" style="padding: 40px;">
-    <h1>INGRESAR</h1>
+    <h1>ADMINISTRAR PERFIL</h1>
 </div>
 
 <div class="card card-transparent">
-    <form method="POST" entycape="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="card card-transparent">
             <h5 class="card-header"></h5>
