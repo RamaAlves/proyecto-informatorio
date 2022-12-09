@@ -10,8 +10,11 @@ from .forms import PostForm, RegistrarForm
 
 # Create your views here.
 def index(request):
+    posts = Post.objects.all()
 
-    return render(request, 'index.html',)
+    context={'post':posts}
+
+    return render(request, 'index.html', context)
 
 def nosotros(request):
 

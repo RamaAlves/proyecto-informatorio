@@ -19,7 +19,7 @@
     <form method="POST" entycape="multipart/form-data" class="form">
         {% csrf_token %}
         <div class="card card-transparent">
-            {{form.as_p}}
+            {{form}}
             
             <button type="submit">REGISTRARSE</button>
             <a href="{% url 'blog:index' %}">Cancelar</a>
