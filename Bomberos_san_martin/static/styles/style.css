@@ -52,3 +52,7 @@ body{
 /* .spinner-border{
   color define color de spin 
 } */
+
+.success{
+  background-color: #ff0000;
+}
