@@ -42,10 +42,8 @@
                     <a class="nav-link {% block donacion %}{% endblock%}" href="{% url 'blog:donacion' %}">DONAR</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar post" aria-label="Search">
-                    <button class="btn btn-outline-dark" type="submit">BUSCAR</button>
-                </form>
+                {% block buscador %}
+                {% endblock buscador %}
                 <div class="d-flex" style="margin-left:12px;">
                     <ul class="navbar-nav d-flex me-auto mb-2 mb-lg-0">
                     {% if user.is_authenticated %}

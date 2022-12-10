@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
@@ -27,62 +26,33 @@
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-                <li class="nav-item">
-                <a class="nav-link {% block blog %}{% endblock%}" aria-current="page" href="{% url 'blog:index' %}">BLOG</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link {% block nosotros %}{% endblock%}"  href="{% url 'blog:nosotros' %}">SOBRE NOSOTROS</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link {% block contacto %}{% endblock%}"  href="{% url 'blog:contacto' %}">CONTACTO</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link {% block aspirantes %}{% endblock%}" href="{% url 'blog:aspirantes' %}">ASPIRANTES</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link {% block donacion %}{% endblock%}" href="{% url 'blog:donacion' %}">DONAR</a>
-                </li> 
-            </ul>
-            <form class="d-flex" method="get" role="search">
-                <input class="form-control me-2" type="search" placeholder="Buscar post" aria-label="Search">
-                <button class="btn btn-outline-dark" type="submit">BUSCAR</button>
-            </form>
-            </div>
-            <div class="d-flex" style="margin-left:12px;">
-                <ul class="navbar-nav d-flex me-auto mb-2 mb-lg-0">
-                {% if user.is_authenticated %}
-                    <li><a class="btn btn-outline-dark" href="{% url 'blog:perfil' %}">{{ user.get_username }}</a></li>
-                    <li><a class="btn btn-outline-dark"style="margin-left:12px;" href="{% url 'blog:logout'%}?next={{request.path}}">Logout</a></li>
-                {% else %}
-                    <li><a class="btn btn-outline-dark"href="{% url 'blog:login'%}?next={{request.path}}">Login</a></li>
-                {% endif %}
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                    <li class="nav-item">
+                    <a class="nav-link {% block blog %}{% endblock%}" aria-current="page" href="{% url 'blog:index' %}">BLOG</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link {% block nosotros %}{% endblock%}"  href="{% url 'blog:nosotros' %}">SOBRE NOSOTROS</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link {% block contacto %}{% endblock%}"  href="{% url 'blog:contacto' %}">CONTACTO</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link {% block aspirantes %}{% endblock%}" href="{% url 'blog:aspirantes' %}">ASPIRANTES</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link {% block donacion %}{% endblock%}" href="{% url 'blog:donacion' %}">DONAR</a>
+                    </li> 
                 </ul>
-=======
-{% extends 'base.html' %}
-{% comment %} headers {% endcomment %}
-{% block styles %}<link rel="stylesheet" href="static/styles/perfil.css">{% endblock %}
-
-{% comment %} body {% endcomment %}
-{% comment %} navbar {% endcomment %}
-{% block perfil %} active {% endblock %}
-
-{% comment %} contenido de pag {% endcomment %}
-{% block content %}
-
-
-
-<div class="jumbotron text-center" style="padding: 40px;">
-    <h1>ADMINISTRAR PERFIL</h1>
-</div>
-
-<div class="card card-transparent">
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="card card-transparent">
-            <h5 class="card-header"></h5>
-            <div class="card-body">
->>>>>>> main
+                <div class="d-flex" style="margin-left:12px;">
+                    <ul class="navbar-nav d-flex me-auto mb-2 mb-lg-0">
+                    {% if user.is_authenticated %}
+                        <li><a class="btn btn-outline-dark" href="{% url 'blog:perfil' %}">{{ user.get_username }}</a></li>
+                        <li><a class="btn btn-outline-dark"style="margin-left:12px;" href="{% url 'blog:logout'%}?next={{request.path}}">Logout</a></li>
+                    {% else %}
+                        <li><a class="btn btn-outline-dark"href="{% url 'blog:login'%}?next={{request.path}}">Login</a></li>
+                    {% endif %}
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>

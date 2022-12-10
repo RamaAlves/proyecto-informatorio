@@ -6,10 +6,64 @@
 {% comment %} body {% endcomment %}
 {% comment %} navbar {% endcomment %}
 {% block blog %} active {% endblock %}
-
+{% block buscador %}
+  <form class="d-flex" role="search" method="get">
+      <input class="form-control me-2" type="search" placeholder="Buscar post" aria-label="Search" name="buscar" value={{request.GET.buscar}}>
+      <button class="btn btn-outline-dark" type="submit">BUSCAR</button>
+  </form>
+{% endblock buscador %}
 {% comment %} contenido de pag {% endcomment %}
 {% block content %}
+<div class="card text-bg-secondary row">
+  <div class="col-sm-12">
 
+    <form class="row" role="search" method="get">
+      <div class="col">
+        <div class="row g-3 align-items-center">
+          <div class="col-sm-3">
+            <div class="row">
+              <label for="ordenarSelect" class="col-sm-5 col-form-label col-form-label-sm">Ordenar posts:</label>
+              <div class="col-sm-7">
+                <select class="form-select" aria-label="ordenar por"  id="ordenarSelect" name="ordenar">
+                    <option selected>mas recientes primero</option>
+                    <option >mas antiguos primero</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="row">
+              <label for="dateInput" class="col-sm-3 col-form-label col-form-label-sm">Fecha:</label>
+              <div class="col-sm-9">
+                <input type="date" class="form-control" id="dateInput" aria-describedby="dateHelp" name="fecha" value={{request.GET.fecha}}>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="row">
+              <label for="categoriaSelect" class="col-sm-4 col-form-label col-form-label-sm">Categoria:</label>
+              <div class="col-sm-8">
+                <select class="form-select" aria-label="Seleccione una categoria"  id="categoriaSelect" name="categoria"  value={{request.GET.categoria}}>
+                  <option selected value='Seleccione una categoria'>{{request.GET.categoria}}</option>
+                  {% for c in cat %}
+                  <option value="{{c.nombre}}">{{c.nombre}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="row">
+              <div class="d-grid gap-2 col-12 mx-auto">
+                <button type="submit" class="btn btn-outline-dark btn-sm" >Filtrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 {% comment %} <div class="jumbotron" style="padding: 40px;">
     <h1>Blog</h1>
 </div> {% endcomment %}
