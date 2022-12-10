@@ -26,37 +26,33 @@
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-                <li class="nav-item">
-                <a class="nav-link {% block blog %}{% endblock%}" aria-current="page" href="{% url 'blog:index' %}">BLOG</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link {% block nosotros %}{% endblock%}"  href="{% url 'blog:nosotros' %}">SOBRE NOSOTROS</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link {% block contacto %}{% endblock%}"  href="{% url 'blog:contacto' %}">CONTACTO</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link {% block aspirantes %}{% endblock%}" href="{% url 'blog:aspirantes' %}">ASPIRANTES</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link {% block donacion %}{% endblock%}" href="{% url 'blog:donacion' %}">DONAR</a>
-                </li> 
-            </ul>
-            <form class="d-flex" method="get" role="search">
-                <input class="form-control me-2" type="search" placeholder="Buscar post" aria-label="Search">
-                <button class="btn btn-outline-dark" type="submit">BUSCAR</button>
-            </form>
-            </div>
-            <div class="d-flex" style="margin-left:12px;">
-                <ul class="navbar-nav d-flex me-auto mb-2 mb-lg-0">
-                {% if user.is_authenticated %}
-                    <li><a class="btn btn-outline-dark" href="{% url 'blog:perfil' %}">{{ user.get_username }}</a></li>
-                    <li><a class="btn btn-outline-dark"style="margin-left:12px;" href="{% url 'blog:logout'%}?next={{request.path}}">Logout</a></li>
-                {% else %}
-                    <li><a class="btn btn-outline-dark"href="{% url 'blog:login'%}?next={{request.path}}">Login</a></li>
-                {% endif %}
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                    <li class="nav-item">
+                    <a class="nav-link {% block blog %}{% endblock%}" aria-current="page" href="{% url 'blog:index' %}">BLOG</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link {% block nosotros %}{% endblock%}"  href="{% url 'blog:nosotros' %}">SOBRE NOSOTROS</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link {% block contacto %}{% endblock%}"  href="{% url 'blog:contacto' %}">CONTACTO</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link {% block aspirantes %}{% endblock%}" href="{% url 'blog:aspirantes' %}">ASPIRANTES</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link {% block donacion %}{% endblock%}" href="{% url 'blog:donacion' %}">DONAR</a>
+                    </li> 
                 </ul>
+                <div class="d-flex" style="margin-left:12px;">
+                    <ul class="navbar-nav d-flex me-auto mb-2 mb-lg-0">
+                    {% if user.is_authenticated %}
+                        <li><a class="btn btn-outline-dark" href="{% url 'blog:perfil' %}">{{ user.get_username }}</a></li>
+                        <li><a class="btn btn-outline-dark"style="margin-left:12px;" href="{% url 'blog:logout'%}?next={{request.path}}">Logout</a></li>
+                    {% else %}
+                        <li><a class="btn btn-outline-dark"href="{% url 'blog:login'%}?next={{request.path}}">Login</a></li>
+                    {% endif %}
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
