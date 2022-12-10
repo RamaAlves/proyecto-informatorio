@@ -13,7 +13,6 @@ def index(request):
     cat= Categoria.objects.all()
 
     ordenar = request.GET.get('ordenar')
-    print(ordenar)
     if ordenar == 'mas antiguos primero':
         ordenar = 'fecha_creacion'
     else:
