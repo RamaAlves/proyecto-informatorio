@@ -14,6 +14,11 @@ def index(request):
 
     ordenar = request.GET.get('ordenar')
     print(ordenar)
+    if ordenar == 'mas antiguos primero':
+        ordenar = 'fecha_creacion'
+    else:
+        ordenar = '-fecha_creacion'
+    
     fecha = request.GET.get('fecha')
     categoria = request.GET.get('categoria')
     busqueda = request.GET.get('buscar')
@@ -23,9 +28,9 @@ def index(request):
             Q(resumen__icontains=busqueda)|
             Q(texto__icontains=busqueda)|
             Q(categoria__nombre__icontains=busqueda)
-        ).distinct()
+        ).distinct().order_by(ordenar)
     else:
-        posts = Post.objects.all()
+        posts = Post.objects.all().order_by(ordenar)
     
     if categoria and categoria != "Seleccione una categoria":
         posts = posts.filter(
