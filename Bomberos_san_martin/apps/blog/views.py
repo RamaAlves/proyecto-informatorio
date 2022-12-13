@@ -2,17 +2,46 @@ from django.shortcuts import render, redirect
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponse, HttpResponseNotFound
-
+from django.db.models import Q
 from django.contrib import messages
 
-from .models import Post
+from .models import Post, Categoria
 from .forms import PostForm, RegistrarForm
 
 # Create your views here.
 def index(request):
-    posts = Post.objects.all()
+    cat= Categoria.objects.all()
 
-    context={'post':posts}
+    ordenar = request.GET.get('ordenar')
+    if ordenar == 'mas antiguos primero':
+        ordenar = 'fecha_creacion'
+    else:
+        ordenar = '-fecha_creacion'
+    
+    fecha = request.GET.get('fecha')
+    categoria = request.GET.get('categoria')
+    busqueda = request.GET.get('buscar')
+    if busqueda:
+        posts = Post.objects.filter(
+            Q(titulo__icontains=busqueda)|
+            Q(resumen__icontains=busqueda)|
+            Q(texto__icontains=busqueda)|
+            Q(categoria__nombre__icontains=busqueda)
+        ).distinct().order_by(ordenar)
+    else:
+        posts = Post.objects.all().order_by(ordenar)
+    
+    if categoria and categoria != "Seleccione una categoria":
+        posts = posts.filter(
+            Q(categoria__nombre__contains=categoria)
+        )
+    if fecha:
+        posts = posts.filter(
+            Q(fecha_creacion=fecha)
+        )
+
+    posts.order_by('fecha_creacion')
+    context={'post':posts, 'cat':cat}
 
     return render(request, 'index.html', context)
 

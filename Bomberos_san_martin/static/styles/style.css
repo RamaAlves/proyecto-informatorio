@@ -11,7 +11,7 @@ body{
 
 .navbar {
   background-color: var(--bg-navbar);
-  padding: 20px;
+  padding: 12px;
   padding-bottom: 10px;
 }
 .navbar .logo {
@@ -30,7 +30,8 @@ body{
 }
 
 .card{
-  margin: 24px;
+  margin: 24px auto;
+  padding: 8px;
 }
 
 .list-group .active{
