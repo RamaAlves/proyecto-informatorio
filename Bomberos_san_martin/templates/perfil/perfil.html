@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
@@ -53,36 +52,11 @@
                 <ul class="navbar-nav d-flex me-auto mb-2 mb-lg-0">
                 {% if user.is_authenticated %}
                     <li><a class="btn btn-outline-dark" href="{% url 'blog:perfil' %}">{{ user.get_username }}</a></li>
-                    <li><a class="btn btn-outline-dark"style="margin-left:12px;" href="{% url 'blog:logout'%}?next={{request.path}}">Logout</a></li>
+                    <li><a class="btn btn-outline-dark"style="margin-left:12px;" href="{% url 'blog:logout'%}">Logout</a></li>
                 {% else %}
-                    <li><a class="btn btn-outline-dark"href="{% url 'blog:login'%}?next={{request.path}}">Login</a></li>
+                    <li><a class="btn btn-outline-dark"href="{% url 'blog:login'%}">Login</a></li>
                 {% endif %}
                 </ul>
-=======
-{% extends 'base.html' %}
-{% comment %} headers {% endcomment %}
-{% block styles %}<link rel="stylesheet" href="static/styles/perfil.css">{% endblock %}
-
-{% comment %} body {% endcomment %}
-{% comment %} navbar {% endcomment %}
-{% block perfil %} active {% endblock %}
-
-{% comment %} contenido de pag {% endcomment %}
-{% block content %}
-
-
-
-<div class="jumbotron text-center" style="padding: 40px;">
-    <h1>ADMINISTRAR PERFIL</h1>
-</div>
-
-<div class="card card-transparent">
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="card card-transparent">
-            <h5 class="card-header"></h5>
-            <div class="card-body">
->>>>>>> main
             </div>
         </div>
     </nav>

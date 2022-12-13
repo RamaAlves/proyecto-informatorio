@@ -47,14 +47,15 @@
                     <button class="btn btn-outline-dark" type="submit">BUSCAR</button>
                 </form>
                 <div class="d-flex" style="margin-left:12px;">
-                    <ul class="navbar-nav d-flex me-auto mb-2 mb-lg-0">
+                    <form class="navbar-nav d-flex me-auto mb-2 mb-lg-0">
                     {% if user.is_authenticated %}
-                        <li><a class="btn btn-outline-dark" href="{% url 'blog:perfil' %}">{{ user.get_username }}</a></li>
-                        <li><a class="btn btn-outline-dark"style="margin-left:12px;" href="{% url 'blog:logout'%}?next={{request.path}}">Logout</a></li>
+                        <a class="btn btn-outline-dark" href="{% url 'blog:perfil' %}">{{ user.get_username }}</a>
+                        <a class="btn btn-outline-dark"style="margin-left:12px;" href="{% url 'blog:logout'%}?next={{request.path}}">Logout</a>
+                        <input type="hidden" name='next' value='blog:index' >
                     {% else %}
-                        <li><a class="btn btn-outline-dark"href="{% url 'blog:login'%}?next={{request.path}}">Login</a></li>
+                        <a class="btn btn-outline-dark"href="{% url 'blog:login'%}?next={{request.path}}">Login</a>
                     {% endif %}
-                    </ul>
+                    </form>
                 </div>
             </div>
         </div>
