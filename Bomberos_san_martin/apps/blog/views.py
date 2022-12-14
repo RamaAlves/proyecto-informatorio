@@ -1,12 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponse, HttpResponseNotFound
 from django.db.models import Q
 from django.contrib import messages
 
-from .models import Post, Categoria
-from .forms import PostForm, RegistrarForm
+from .models import Post, Categoria, Comentario, Bomberos
+from .forms import PostForm, RegistrarForm, ComentarioForm
 
 # Create your views here.
 def index(request):
@@ -45,9 +45,27 @@ def index(request):
 
     return render(request, 'index.html', context)
 
-def nosotros(request):
+def mostrarPost(request, id):
+    if request.method == 'POST':
+        comentario_form = ComentarioForm(request.POST or None)
+        if comentario_form.is_valid():
+            comentario_form.save()
+            return redirect(f'post/mostrar_post.html/{id}')
+    else:
+        comentario_form = PostForm()
 
-    return render(request, 'nosotros.html',)
+    post = get_object_or_404(Post, id=id)
+    comentarios = get_object_or_404(Comentario, id_post=id)
+    context ={'post':post, 'comentarios':comentarios}
+    return render(request, 'post/mostrar_post.html', context)
+
+def nosotros(request):
+    bomberos = Bomberos.objects.all()
+    directivos = bomberos.filter(es_directivo=True)
+    jefes = bomberos.filter(es_jefe=True)
+    bomberos_activos = bomberos.filter(activo=True)
+    context={"bomberos":bomberos_activos, "directivos":directivos, "jefes":jefes}
+    return render(request, 'nosotros.html', context)
 
 def contacto(request):
 
@@ -75,7 +93,7 @@ def crearPost(request):
             return redirect('blog:index')
     else:
         post_form = PostForm()
-    return render(request, 'post/crear_post.html', {'post_form': post_form})
+    return render(request, 'post/guardar_post.html', {'post_form': post_form})
 
 def registrarUsuario(request):
     if request.method == 'POST':

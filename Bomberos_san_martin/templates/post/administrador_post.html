@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% comment %} headers {% endcomment %}
+{% block styles %}{% endblock %}
+
+{% comment %} body {% endcomment %}
+{% comment %} navbar {% endcomment %}
+{% comment %} contenido de pag {% endcomment %}
+{% block banner %}    
+{% endblock banner %}
+{% block content %}
+
+<div class="d-grid gap-2 col-6 mx-auto">
+    <button class="btn btn-outline-dark" type="button"><a href="{% url 'blog:crear_post'%}">Crear Post</a></button>    
+</div>
+
+{% if post %}
+  {% for p in post %}
+    <div class="card text-bg-secondary mb-3" >
+        <div class="row g-0">
+            <div class="col-md-6">
+                <img src="{{p.imagen.url}}" class="img-fluid rounded-start" alt="imagen-post">
+            </div>
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h5 class="card-title">{{p.titulo}}</h5>
+                    <p class="card-text">{{p.resumen}}</p>
+                    <p class="card-text"><small class="text-muted-custom">{{p.fecha_creacion}}</small></p>
+                    <p class="card-text"><small class="text-muted-custom">{{p.categoria.nombre}}</small></p>
+                 </div>
+             </div>
+        </div>
+        <div class="row g-0">
+            <div class='col'>
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                    <button type="button" class="btn btn-outline-dark"><a href="{% url 'blog:editar_post' p.id %}">Editar</a></button>
+                    <button type="button" class="btn btn-outline-dark"><a href="{% url 'blog:eliminar_post' p.id %}">Eliminar</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+  {% endfor %}
+{% else %}
+  <h1>No hay post creados</h1>
+{% endif %}
+
+{% endblock content %}

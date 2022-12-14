@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+{% comment %} headers {% endcomment %}
+{% block styles %}{% endblock %}
+
+{% comment %} body {% endcomment %}
+{% comment %} navbar {% endcomment %}
+{% comment %} contenido de pag {% endcomment %}
+{% block banner %}    
+{% endblock banner %}
+{% block content %}
+
+<div class="d-grid gap-2 col-6 mx-auto">
+    <button class="btn btn-outline-dark" type="button"><a href="{% url 'blog:cargar_bombero'%}">Cargar Bombero</a></button>    
+</div>
+
+<div class="jumbotron card" style="padding: 40px;">
+    <h2>COMISION DIRECTIVA:</h2>
+    
+    {% if directivos %}
+      {% for directivo in directivos %}
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col">
+              <div class="card card-bombero">
+                  <img src="{{directivo.imagen.url}}" class="card-img-top" alt="foto de {{directivo.primer_nombre}} {{directivo.apellido}}">
+                  <div class="card-body">
+                      <h5 class="card-title">{{directivo.apellido}} {{directivo.primer_nombre}} {{directivo.segundo_nombre}}</h5>
+                      <p class="card-text">{{directivo.biografia}}</p>
+                  </div>
+              </div>
+          </div>
+          <div class='col'>
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                <button type="button" class="btn btn-outline-dark"><a href="{% url 'blog:editar_bombero' directivo.id %}">Editar</a></button>
+                <button type="button" class="btn btn-outline-dark"><a href="{% url 'blog:eliminar_bombero' directivo.id %}">Eliminar</a></button>
+            </div>
+          </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <h3>No hay comision directiva actualmente</h3>
+    {% endif %}
+</div>
+
+<div class="jumbotron card" style="padding: 40px;">
+    <h2>JEFE DEL CUERPO DE BOMBEROS:</h2>
+    
+    {% if jefes %}
+      {% for jefe in jefes %}
+      
+      <div class="d-flex justify-content-center">
+          <div class="card" style="width: 34rem;">
+              <img src="{{jefe.imagen.url}}" class="card-img-top" alt="foto de {{jefe.primer_nombre}} {{jefe.apellido}}">
+              <div class="card-body">
+                  <h5 class="card-title">{{jefe.apellido}} {{jefe.primer_nombre}} {{jefe.segundo_nombre}}</h5>
+                  <p class="card-text">{{jefe.calcular_edad}} años</p>
+                  <p class="card-text">{{jefe.biografia}}</p>
+              </div>
+          </div>
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" class="btn btn-outline-dark"><a href="{% url 'blog:editar_bombero' jefe.id %}">Editar</a></button>
+            <button type="button" class="btn btn-outline-dark"><a href="{% url 'blog:eliminar_bombero' jefe.id %}">Eliminar</a></button>
+          </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <h3>No hay jefes designados</h3>
+    {% endif %}
+    
+</div>
+<div class="jumbotron card" style="padding: 40px;">
+    <h2>BOMBEROS:</h2>
+    
+    {% if bomberos %}
+      {% for bombero in bomberos %}
+      
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card card-bombero">
+                    <img src="{{bombero.imagen.url}}" class="card-img-top" alt="foto de {{bombero.primer_nombre}} {{bombero.apellido}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{bombero.apellido}} {{bombero.primer_nombre}} {{bombero.segundo_nombre}}</h5>
+                        <p class="card-text">{{bombero.calcular_edad}} años</p>
+                        <p class="card-text">{{bombero.biografia}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class='col'>
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                    <button type="button" class="btn btn-outline-dark"><a href="{% url 'blog:editar_bombero' bombero.id %}">Editar</a></button>
+                    <button type="button" class="btn btn-outline-dark"><a href="{% url 'blog:eliminar_bombero' bombero.id %}">Eliminar</a></button>
+                </div>
+            </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h3>No bomberos activos</h3>
+    {% endif %}
+</div>
+{% endblock content %}

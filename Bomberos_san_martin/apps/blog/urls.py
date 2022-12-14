@@ -15,6 +15,7 @@ urlpatterns = [
     path('perfil/', views.perfil, name='perfil'), 
     path('registro/', views.registrarUsuario, name='registro'),
     path('crear_post/', views.crearPost, name='crear_post'),
+    path('mostrar_post/<int:id>', views.mostrarPost, name='mostrar_post'),
     path('login/', LoginView.as_view(template_name='perfil/login.html'), name='login'),
     path('logout/', LogoutView.as_view(template_name='perfil/logout.html'), name='logout')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

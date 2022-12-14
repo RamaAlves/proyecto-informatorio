@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% comment %} headers {% endcomment %}
+{% block styles %}{% endblock %}
+
+{% comment %} body {% endcomment %}
+{% comment %} navbar {% endcomment %}
+{% block blog %} active {% endblock %}
+{% comment %} contenido de pag {% endcomment %}
+{% block content %}
+{% comment %} <div class="jumbotron" style="padding: 40px;">
+    <h1>Blog</h1>
+</div> {% endcomment %}
+{% if post %}
+    <div class="card text-bg-secondary mb-3" >
+        <div class="row g-0">
+            <div class="col-md-6">
+                <img src="{{post.imagen.url}}" class="img-fluid rounded-start" alt="imagen-post">
+            </div>
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h5 class="card-title">{{post.titulo}}</h5>
+                    <p class="card-text"><small class="text-muted-custom">{{post.fecha_creacion}}</small></p>
+                    <p class="card-text"><small class="text-muted-custom">{{post.categoria.nombre}}</small></p>
+                </div>
+                <p class="card-text">{{post.texto}}</p>
+            </div>
+        </div>
+    </div>
+    {% if user.is_authenticated %}
+    <form method="POST" class="row row-cols-lg-auto g-3 align-items-center">
+        {{% csrf_token %}}
+        <div class="col-12">
+          <label class="visually-hidden" for="inlineFormInputGroupComentar">Comentar</label>
+          <div class="input-group">
+            <div class="input-group-text">Comentar</div>
+            <input type="text" class="form-control" id="inlineFormInputGroupComentar" placeholder="comentar...">
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Comentar</button>
+        </div>
+    </form>
+    {% endif %}
+    {% if comentarios %}
+    <div class="list-group">
+        {% for c in comentarios %}
+        <div class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <small class="mb-1 primary-color">{{c.id_autor.nombre}}</small>
+            <small>{{c.fecha_creacion}}</small>
+          </div>
+          <p class="mb-1">{{c.texto}}</p>
+        </div>
+        {% endfor %}
+    {% endif %}
+{% else %}
+  <h1>Error al cargar el post</h1>
+{% endif %}
+
+{% endblock content %}

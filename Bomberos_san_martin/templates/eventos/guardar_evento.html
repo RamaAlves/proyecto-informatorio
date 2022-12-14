@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% comment %} headers {% endcomment %}
+{% block styles %}{% endblock %}
+
+{% comment %} body {% endcomment %}
+{% comment %} navbar {% endcomment %}
+{% comment %} contenido de pag {% endcomment %}
+{% block banner %}    
+{% endblock banner %}
+{% block content %}
+<div class="card card-transparent">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="card card-transparent">
+                <h5 class="card-header"></h5>
+                <div class="card-body">
+                    {{evento_form.as_p}}
+                </div>
+                <button type="submit">Guardar</button>
+                <a href="{% url 'blog:index' %}">Cancelar</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

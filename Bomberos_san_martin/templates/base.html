@@ -65,10 +65,12 @@
         </div>
         {% endfor %}
     {% endif %}
+    {% block banner %}
     <div class="container-fluid" style="padding:0;">
         <img class="banner" src="{% static 'images/baner-facebook.jpg' %}"  alt="banner">
     </div>
     <div class="container-xxl">
+    {% endblock banner %}
     {% block content %}
     {% endblock content%}
     </div>
