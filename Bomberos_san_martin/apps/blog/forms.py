@@ -19,3 +19,23 @@ class RegistrarForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
         help_texts = {k:"" for k in fields}
+
+class ComentarioForm(forms.ModelForm):
+    class Meta:
+        model = Comentario
+        fields = ['texto']
+
+class CategoriaForm(forms.ModelForm):
+    class Meta:
+        model = Categoria
+        fields = ['nombre']
+
+class EventoForm(forms.ModelForm):
+    class Meta:
+        model = Evento
+        fields = ['titulo','descripcion','usuario']
+
+class BomberoForm(forms.ModelForm):
+    class Meta:
+        model = Bombero
+        fields = ['primer_nombre','segundo_nombre','apellido', 'fecha_nacimiento', 'imagen','biografia','activo','es_jefe','es_directivo']

@@ -63,3 +63,11 @@ body{
 .enlace-invisible {
   text-decoration: none;
 }
+
+.card-evento{
+  color:#4D4D4D;
+  font-size: 1rem;
+}
+.parrafo-tarjeta-bombero{
+  height: 8rem;
+}
