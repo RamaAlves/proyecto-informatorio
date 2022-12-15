@@ -21,20 +21,20 @@
   <h2>COMISION DIRECTIVA:</h2>
   
   {% if directivos %}
+  <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for directivo in directivos %}
-    <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
             <div class="card card-bombero">
                 <img src="{{directivo.imagen.url}}" class="card-img-top" alt="foto de {{directivo.primer_nombre}} {{directivo.apellido}}">
                 <div class="card-body">
                     <h5 class="card-title">{{directivo.apellido}} {{directivo.primer_nombre}} {{directivo.segundo_nombre}}</h5>
-                    <p class="card-text">{{directivo.biografia}}</p>
+                    <p class="card-text overflow-auto parrafo-tarjeta-bombero" >{{directivo.biografia}}</p>
                 </div>
             </div>
         </div>
-    </div>
-    
-    {% endfor %}
+        
+        {% endfor %}
+      </div>
   {% else %}
     <h3>No hay comision directiva actualmente</h3>
   {% endif %}
@@ -44,19 +44,20 @@
   <h2>JEFE DEL CUERPO DE BOMBEROS:</h2>
   
   {% if jefes %}
-    {% for jefe in jefes %}
-    
-    <div class="d-flex justify-content-center">
-        <div class="card" style="width: 34rem;">
-            <img src="{{jefe.imagen.url}}" class="card-img-top" alt="foto de {{jefe.primer_nombre}} {{jefe.apellido}}">
-            <div class="card-body">
-                <h5 class="card-title">{{jefe.apellido}} {{jefe.primer_nombre}} {{jefe.segundo_nombre}}</h5>
-                <p class="card-text">{{jefe.calcular_edad}} años</p>
-                <p class="card-text">{{jefe.biografia}}</p>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for jefe in jefes %}
+            <div class="col">
+                <div class="card card-bombero">
+                    <img src="{{jefe.imagen.url}}" class="card-img-top" alt="foto de {{jefe.primer_nombre}} {{jefe.apellido}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{jefe.apellido}} {{jefe.primer_nombre}} {{jefe.segundo_nombre}}</h5>
+                        <p class="card-text">{{jefe.calcular_edad}} años</p>
+                        <p class="card-text overflow-auto parrafo-tarjeta-bombero">{{jefe.biografia}}</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    {% endfor %}
+            {% endfor %}
+          </div>
   {% else %}
     <h3>No hay jefes designados</h3>
   {% endif %}
@@ -66,21 +67,20 @@
   <h2>BOMBEROS:</h2>
   
   {% if bomberos %}
+  <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for bombero in bomberos %}
-    
-      <div class="row row-cols-1 row-cols-md-3 g-4">
           <div class="col">
               <div class="card card-bombero">
                   <img src="{{bombero.imagen.url}}" class="card-img-top" alt="foto de {{bombero.primer_nombre}} {{bombero.apellido}}">
                   <div class="card-body">
                       <h5 class="card-title">{{bombero.apellido}} {{bombero.primer_nombre}} {{bombero.segundo_nombre}}</h5>
                       <p class="card-text">{{bombero.calcular_edad}} años</p>
-                      <p class="card-text">{{bombero.biografia}}</p>
+                      <p class="card-text overflow-auto parrafo-tarjeta-bombero">{{bombero.biografia}}</p>
                   </div>
               </div>
           </div>
-      </div>
-    {% endfor %}
+          {% endfor %}
+        </div>
   {% else %}
     <h3>No bomberos activos</h3>
   {% endif %}

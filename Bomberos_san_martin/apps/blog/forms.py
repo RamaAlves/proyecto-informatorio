@@ -25,12 +25,17 @@ class ComentarioForm(forms.ModelForm):
         model = Comentario
         fields = ['texto']
 
-class EventosForm(forms.ModelForm):
+class CategoriaForm(forms.ModelForm):
+    class Meta:
+        model = Categoria
+        fields = ['nombre']
+
+class EventoForm(forms.ModelForm):
     class Meta:
         model = Evento
-        fields = ['titulo','descripcion']
+        fields = ['titulo','descripcion','usuario']
 
-class BomberosForm(forms.ModelForm):
+class BomberoForm(forms.ModelForm):
     class Meta:
         model = Bombero
         fields = ['primer_nombre','segundo_nombre','apellido', 'fecha_nacimiento', 'imagen','biografia','activo','es_jefe','es_directivo']
