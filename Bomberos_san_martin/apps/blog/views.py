@@ -10,6 +10,7 @@ from .forms import PostForm, RegistrarForm, ComentarioForm, CategoriaForm, Event
 
 # Create your views here.
 def index(request):
+    """ se muestra la pantalla de inicio con post y eventos, además contiene la logica de busqueda y filtros """
     cat= Categoria.objects.all()
 
     ordenar = request.GET.get('ordenar')
@@ -47,6 +48,7 @@ def index(request):
     return render(request, 'index.html', context)
 
 def nosotros(request):
+    """ se recuperan bomberos y se los muestra por pantalla """
     bomberos = Bombero.objects.all()
     directivos = bomberos.filter(es_directivo=True)
     jefes = bomberos.filter(es_jefe=True)
@@ -55,22 +57,23 @@ def nosotros(request):
     return render(request, 'nosotros.html', context)
 
 def contacto(request):
-
+    """ se muestra el template con info de contacto """
     return render(request, 'contacto.html',)
 
 def aspirantes(request):
-
+    """ se muestra el template con info para aspirantes """
     return render(request, 'aspirantes.html',)
 
 def donacion(request):
-
+    """ se muestra el template con elementos necesarios para la estacion"""
     return render(request, 'donacion.html',)
 
 def perfil(request):
-
+    """ se muestra info de usuario o enlaces para editar secciones segun permisos """
     return render(request, 'perfil/perfil.html',)
 
 def registrarUsuario(request):
+    """ logica de registro de usuario """
     if request.method == 'POST':
         form= RegistrarForm(request.POST)
         if form.is_valid():
@@ -89,7 +92,7 @@ def registrarUsuario(request):
 ### CRUD Post
 
 def crearPost(request):
-    
+    """ logica para crear post y guardarlo en la base de datos """
     if request.method == 'POST':
         post_form = PostForm(request.POST or None, request.FILES or None)
         if post_form.is_valid():
@@ -100,6 +103,7 @@ def crearPost(request):
     return render(request, 'post/guardar_post.html', {'post_form': post_form})
 
 def mostrarPost(request, pk):
+    """ se muestra el template con un posteo y sus comentarios """
     post = get_object_or_404(Post, pk=pk)
     comentario_form = ComentarioForm()
 
@@ -124,12 +128,14 @@ def mostrarPost(request, pk):
     return render(request, 'post/mostrar_post.html', context)
 
 def administrarPosts(request):
+    """ se muestran los post creados con las opciones de editar, eliminar y crear """
     cat= Categoria.objects.all()
     posts = Post.objects.all().order_by('-fecha_creacion')
     context={'post':posts, 'cat':cat}
     return render(request, 'post/administrar_post.html', context)
 
 def actualizarPost(request,pk):
+    """ funcion para modificar un post creado """
     post = get_object_or_404(Post, pk=pk)
     
     if request.method == 'POST':
@@ -154,6 +160,7 @@ def actualizarPost(request,pk):
     return render(request, 'post/guardar_post.html', context)
 
 def eliminarPost(request,pk):
+    """ funcion para eliminar un post de la base de datos """
     post = get_object_or_404(Post, pk=pk)
     print("Post eliminado: ",post)
     post.delete()
@@ -162,12 +169,13 @@ def eliminarPost(request,pk):
 ### CRUD Categoria
 
 def administrarCategorias(request):
+    """ se muestran las categorias creadas con las opciones de editar, eliminar y crear """
     categorias= Categoria.objects.all()
     context={'categorias':categorias}
     return render(request, 'categoria/administrar_categorias.html', context)
 
 def agregarCategoria(request):
-    
+    """ toma los compos del form para crear una categoria y guardarla en la base de datos """
     if request.method == 'POST':
         categoria_form = CategoriaForm(request.POST or None)
         if categoria_form.is_valid():
@@ -180,6 +188,7 @@ def agregarCategoria(request):
     return render(request, 'categoria/guardar_categoria.html', context)
 
 def actualizarCategoria(request,pk):
+    """ recupera la categoria por su id y actualiza los campos modificados """
     categoria = get_object_or_404(Categoria, pk=pk)
     
     if request.method == 'POST':
@@ -197,6 +206,7 @@ def actualizarCategoria(request,pk):
     return render(request, 'categoria/guardar_categoria.html', context)
 
 def eliminarCategoria(request,pk):
+    """ recupera la categoria por su id y la elimina """
     categoria = get_object_or_404(Categoria, pk=pk)
     print("Categoria eliminada: ",categoria)
     nombre_categoria = categoria.nombre
@@ -207,12 +217,13 @@ def eliminarCategoria(request,pk):
 ### CRUD Evento
 
 def administrarEventos(request):
+    """ se muestran las categorias creadas con las opciones de editar, eliminar y crear """
     eventos= Evento.objects.all()
     context={'eventos':eventos}
     return render(request, 'evento/administrar_eventos.html', context)
 
 def agregarEvento(request):
-    
+    """ toma los compos del form para crear un evento y guardarlo en la base de datos """
     if request.method == 'POST':
         evento_form = EventoForm(request.POST or None)
         if evento_form.is_valid():
@@ -225,6 +236,7 @@ def agregarEvento(request):
     return render(request, 'evento/guardar_evento.html', context)
 
 def actualizarEvento(request,pk):
+    """ recupera el evento por id y actualiza los campos modificados """
     evento = get_object_or_404(Evento, pk=pk)
     
     if request.method == 'POST':
@@ -243,6 +255,7 @@ def actualizarEvento(request,pk):
     return render(request, 'evento/guardar_evento.html', context)
 
 def eliminarEvento(request,pk):
+    """ recupera el evento por su id y lo elimina de la base de datos"""
     evento = get_object_or_404(Evento, pk=pk)
     print("Evento eliminado: ",evento)
     nombre_evento = evento.titulo
@@ -253,6 +266,7 @@ def eliminarEvento(request,pk):
 ### CRUD Bombero
 
 def administrarBomberos(request):
+    """ se muestran los bomberos creados con las opciones de editar, eliminar y crear """
     bomberos= Bombero.objects.all()
     directivos = bomberos.filter(es_directivo=True)
     jefes = bomberos.filter(es_jefe=True)
@@ -261,7 +275,7 @@ def administrarBomberos(request):
     return render(request, 'bombero/administrar_bomberos.html', context)
 
 def agregarBombero(request):
-    
+    """ toma los compos del form para crear un bombero y guardarlo en la base de datos """
     if request.method == 'POST':
         bombero_form = BomberoForm(request.POST or None, request.FILES or None)
         if bombero_form.is_valid():
@@ -275,6 +289,7 @@ def agregarBombero(request):
     return render(request, 'bombero/guardar_bombero.html', context)
 
 def actualizarBombero(request,pk):
+    """ recupera el bombero por id y actualiza los campos modificados """
     bombero = get_object_or_404(Bombero, pk=pk)
     
     if request.method == 'POST':
@@ -300,6 +315,7 @@ def actualizarBombero(request,pk):
     return render(request, 'bombero/guardar_bombero.html', context)
 
 def eliminarBombero(request,pk):
+    """ recupera el bombero por su id y lo elimina de la base de datos"""
     bombero = get_object_or_404(Bombero, pk=pk)
     print("Bombero eliminado: ",bombero)
     nombre_bombero = bombero.primer_nombre + bombero.segundo_nombre
@@ -307,4 +323,3 @@ def eliminarBombero(request,pk):
     bombero.delete()
     messages.success(request, f"Bombero '{apellido_bombero}, {nombre_bombero}' eliminado.")
     return redirect('blog:administrar_bomberos')
-
