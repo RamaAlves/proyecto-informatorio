@@ -10,8 +10,8 @@
 {% endblock banner %}
 {% block content %}
 
-<div class="d-grid gap-2 col-6 mx-auto">
-  <a href="{% url 'blog:agregar_bombero'%}"><button class="btn btn-outline-dark" type="button">Agregar Bombero</button></a>  
+<div class="d-grid gap-2 col-6 mx-auto jumbotron">
+  <a href="{% url 'blog:agregar_bombero'%}" class="btn btn-dark" type="button">Agregar bombero</a>  
 </div>
 
 <div class="jumbotron card" style="padding: 40px; ">
@@ -25,11 +25,12 @@
                   <img src="{{directivo.imagen.url}}" class="card-img-top" alt="foto de {{directivo.primer_nombre}} {{directivo.apellido}}">
                   <div class="card-body">
                     <h5 class="card-title">{{directivo.apellido}} {{directivo.primer_nombre}} {{directivo.segundo_nombre}}</h5>
-                    <p class="card-text" style="overflow: auto;">{{directivo.biografia}}</p>
+                    <p class="card-text card-edad">{{directivo.calcular_edad}} años</p>
+                    <p class="card-text card-biografia" >{{directivo.biografia}}</p>
                   </div>
                   <div class="btn-group" role="group" aria-label="Basic outlined example">
-                    <a href="{% url 'blog:actualizar_bombero' directivo.id %}"><button type="button" class="btn btn-outline-dark">Editar</button></a>
-                    <a href="{% url 'blog:eliminar_bombero' directivo.id %}"><button type="button" class="btn btn-outline-dark">Eliminar</button></a>
+                    <a href="{% url 'blog:actualizar_bombero' directivo.id %}" type="button" class="btn btn-dark">Editar</a>
+                    <a href="{% url 'blog:eliminar_bombero' directivo.id %}" type="button" class="btn btn-dark">Eliminar</a>
                   </div>
               </div>
           </div>
@@ -44,24 +45,24 @@
     <h2>JEFE DEL CUERPO DE BOMBEROS:</h2>
     
     {% if jefes %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
       {% for jefe in jefes %}
-      <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
           <div class="card card-bombero">
             <img src="{{jefe.imagen.url}}" class="card-img-top" alt="foto de {{jefe.primer_nombre}} {{jefe.apellido}}">
             <div class="card-body">
                 <h5 class="card-title">{{jefe.apellido}} {{jefe.primer_nombre}} {{jefe.segundo_nombre}}</h5>
-                <p class="card-text">{{jefe.calcular_edad}} años</p>
-                <p class="card-text">{{jefe.biografia}}</p>
+                <p class="card-text card-edad">{{jefe.calcular_edad}} años</p>
+                <p class="card-text card-biografia">{{jefe.biografia}}</p>
             </div>
             <div class="btn-group" role="group" aria-label="Basic outlined example">
-              <a href="{% url 'blog:actualizar_bombero' jefe.id %}"><button type="button" class="btn btn-outline-dark">Editar</button></a>
-              <a href="{% url 'blog:eliminar_bombero' jefe.id %}"><button type="button" class="btn btn-outline-dark">Eliminar</button></a>
+              <a href="{% url 'blog:actualizar_bombero' jefe.id %}" type="button" class="btn btn-dark">Editar</a>
+              <a href="{% url 'blog:eliminar_bombero' jefe.id %}" type="button" class="btn btn-dark">Eliminar</a>
             </div>
           </div>
         </div>
+        {% endfor %}
       </div>
-      {% endfor %}
     {% else %}
       <h3>No hay jefes designados</h3>
     {% endif %}
@@ -79,12 +80,12 @@
                     <img src="{{bombero.imagen.url}}" class="card-img-top" alt="foto de {{bombero.primer_nombre}} {{bombero.apellido}}">
                     <div class="card-body">
                         <h5 class="card-title">{{bombero.apellido}} {{bombero.primer_nombre}} {{bombero.segundo_nombre}}</h5>
-                        <p class="card-text">{{bombero.calcular_edad}} años</p>
-                        <p class="card-text">{{bombero.biografia}}</p>
+                        <p class="card-text card-edad">{{bombero.calcular_edad}} años</p>
+                        <p class="card-text card-biografia">{{bombero.biografia}}</p>
                     </div>
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                      <a href="{% url 'blog:actualizar_bombero' bombero.id %}"><button type="button" class="btn btn-outline-dark">Editar</button></a>
-                      <a href="{% url 'blog:eliminar_bombero' bombero.id %}"><button type="button" class="btn btn-outline-dark">Eliminar</button></a>
+                      <a href="{% url 'blog:actualizar_bombero' bombero.id %}" type="button" class="btn btn-dark">Editar</a>
+                      <a href="{% url 'blog:eliminar_bombero' bombero.id %}" type="button" class="btn btn-dark">Eliminar</a>
                     </div>
                 </div>
             </div>

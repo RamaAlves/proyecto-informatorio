@@ -7,7 +7,7 @@
 {% comment %} navbar {% endcomment %}
 {% block blog %} active {% endblock %}
 {% block buscador %}
-  <form class="d-flex" role="search" method="get">
+  <form class="d-flex form-buscador" role="search" method="get">
       <input class="form-control me-2" type="search" placeholder="Buscar post" aria-label="Search" name="buscar" value={{request.GET.buscar}}>
       <button class="btn btn-outline-dark" type="submit">BUSCAR</button>
   </form>
@@ -96,19 +96,20 @@
   </div>
   <div class="col-md-3">
     {% if eventos %}
-      <div class="card text-bg-secondary mb-2" >
-        {% for evento in eventos %}
-        <div class="card ">
-          <div class="card-body card-evento">
-            <h5 class="card-title">{{evento.titulo}}</h5>
-            <p class="card-text">{{evento.descripcion}}</p>
-            <p>Publicado por: {{evento.usuario}}</p>
-            <small>{{evento.fecha_creacion}}</small>
+      <div class="card text-bg-secondary mb-2 row" >
+        <div class="col">
+          {% for evento in eventos %}
+          <div class="row">
+            <div class="card-body card-evento">
+              <h5 class="card-title">{{evento.titulo}}</h5>
+              <p class="card-text">{{evento.descripcion}}</p>
+              <p>Publicado por: {{evento.usuario}}</p>
+              <small>{{evento.fecha_creacion}}</small>
+            </div>
           </div>
+          {% endfor %}
         </div>
-        {% endfor %}
-        </div>
-      </div>
+      </div> 
     {% endif%}
   </div>
 </div>

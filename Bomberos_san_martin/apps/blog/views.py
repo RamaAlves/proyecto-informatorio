@@ -293,23 +293,23 @@ def actualizarBombero(request,pk):
     bombero = get_object_or_404(Bombero, pk=pk)
     
     if request.method == 'POST':
-        bombero_form = BomberoForm(request.POST or None, request.FILES or None)
+        bombero_form = BomberoForm(request.POST or None, request.FILES or None, instance=bombero)
         if bombero_form.is_valid():
-            bombero.primer_nombre=bombero_form.cleaned_data['primer_nombre']
-            bombero.segundo_nombre=bombero_form.cleaned_data['segundo_nombre']
-            bombero.apellido=bombero_form.cleaned_data['apellido']
-            bombero.fecha_nacimiento=bombero_form.cleaned_data['fecha_nacimiento']
-            bombero.imagen=bombero_form.cleaned_data['imagen']
-            bombero.biografia=bombero_form.cleaned_data['biografia']
-            bombero.activo=bombero_form.cleaned_data['activo']
-            bombero.es_jefe=bombero_form.cleaned_data['es_jefe']
-            bombero.es_directivo=bombero_form.cleaned_data['es_directivo']
+            # bombero.primer_nombre=bombero_form.cleaned_data['primer_nombre']
+            # bombero.segundo_nombre=bombero_form.cleaned_data['segundo_nombre']
+            # bombero.apellido=bombero_form.cleaned_data['apellido']
+            # bombero.fecha_nacimiento=bombero_form.cleaned_data['fecha_nacimiento']
+            # bombero.imagen=bombero_form.cleaned_data['imagen']
+            # bombero.biografia=bombero_form.cleaned_data['biografia']
+            # bombero.activo=bombero_form.cleaned_data['activo']
+            # bombero.es_jefe=bombero_form.cleaned_data['es_jefe']
+            # bombero.es_directivo=bombero_form.cleaned_data['es_directivo']
             
             bombero.save()
             messages.success(request, f"Bombero '{bombero.apellido}, {bombero.primer_nombre} {bombero.segundo_nombre}' actualizado.")
             return redirect('blog:administrar_bomberos')
     else:
-        bombero_form = BomberoForm(initial={'primer_nombre':bombero.primer_nombre, 'segundo_nombre':bombero.segundo_nombre,'apellido':bombero.apellido, 'fecha_nacimiento':bombero.fecha_nacimiento, 'imagen':bombero.imagen,'biografia':bombero.biografia,'activo':bombero.activo,'es_jefe':bombero.es_jefe,'es_directivo':bombero.es_directivo})
+        bombero_form = BomberoForm(instance=bombero)
 
     context = {'bombero_form': bombero_form}
     return render(request, 'bombero/guardar_bombero.html', context)
