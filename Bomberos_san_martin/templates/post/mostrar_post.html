@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load social_share %}
 {% comment %} headers {% endcomment %}
 {% block metas %}
 <meta property="og:url"                content="http://127.0.0.1:8000/mostrar_post/{{post.id}}" />
@@ -33,19 +34,20 @@
                     <p class="card-text"><small class="text-muted-custom">{{post.fecha_creacion}}</small></p>
                     <p class="card-text"><small class="text-muted-custom">{{post.categoria.nombre}}</small></p>
                     <p class="card-text">{{post.texto}}</p>
-                    {% if user.is_authenticated%}
-                    
                     <!-- Your share button code -->
-                    <div class="fb-share-button" data-href="http://127.0.0.1:8000/mostrar_post/{{post.id}}" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fmostrar_post%2F12&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div>
-                    {% comment %} <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A8000%2Fmostrar_post%2F{{post.id}}&layout=button&size=large&width=103&height=28&appId" width="103" height="28" style="border:none;overflow:hidden" 
-                    scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
- {% endcomment %}                    {% endif %}
+                    <div class="d-grid gap-2 d-md-block">
+                      <div class="fb-share-button btn" data-href="http://127.0.0.1:8000/mostrar_post/{{post.id}}" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fmostrar_post%2F12&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div>
+                      {% comment %} <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A8000%2Fmostrar_post%2F{{post.id}}&layout=button&size=large&width=103&height=28&appId" width="103" height="28" style="border:none;overflow:hidden" 
+                      scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                      {% endcomment %} 
+                      <button class="btn btn-twitter"><i class="fa-brands fa-square-twitter"></i>{% post_to_twitter object_or_url "Post to Twitter" %}</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    {% comment %} opcion 1 {% endcomment %}
-    {% if user.is_authenticated %}
+    {% comment %} comentarios nativos {% endcomment %}
+    {% comment %} {% if user.is_authenticated %}
     <form method="POST" class="row row-cols-lg-auto g-3 align-items-center">
       {% csrf_token %}
         <div class="col-12">
@@ -72,9 +74,9 @@
           <p class="mb-1">{{c.texto}}</p>
         </div>
         {% endfor %}
-    {% endif %}
-    {% comment %} opcion 2 {% endcomment %}
-    {% comment %} {% if user.is_authenticated %}
+    {% endif %} {% endcomment %}
+    {% comment %} opcion comentarios de discuss {% endcomment %}
+    {% if user.is_authenticated %}
     <div id="disqus_thread"></div>
     <script>
     /**
@@ -100,7 +102,7 @@
     </noscript>
     {% else %}
       <p>Para mostrar ver los comentarios, comentar y compartir debes loguearte</p>
-    {% endif %} {% endcomment %}
+    {% endif %}
 {% else %}
   <h1>Error al cargar el post</h1>
 {% endif %}

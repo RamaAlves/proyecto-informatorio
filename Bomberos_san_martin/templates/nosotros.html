@@ -11,13 +11,13 @@
 {% block content %}
 
 
-<div class="jumbotron" >
+{% comment %} <div class="jumbotron" >
     <h1 class="text-center">SOBRE NOSOTROS</h1>
-</div>
+</div> {% endcomment %}
 
 
 
-<div class="jumbotron card" style="padding: 40px;">
+{% comment %} <div class="jumbotron card" style="padding: 40px;"> {% endcomment %}
   <h2>COMISION DIRECTIVA:</h2>
   
   {% if directivos %}
@@ -38,9 +38,9 @@
   {% else %}
     <h3>No hay comision directiva actualmente</h3>
   {% endif %}
-</div>
-
-<div class="jumbotron card" style="padding: 40px;">
+{% comment %} </div> {% endcomment %}
+{% comment %} 
+<div class="jumbotron card" style="padding: 40px;"> {% endcomment %}
   <h2>JEFE DEL CUERPO DE BOMBEROS:</h2>
   
   {% if jefes %}
@@ -62,8 +62,8 @@
     <h3>No hay jefes designados</h3>
   {% endif %}
   
-</div>
-<div class="jumbotron card" style="padding: 40px;">
+{% comment %} </div> {% endcomment %}
+{% comment %} <div class="jumbotron card" style="padding: 40px;"> {% endcomment %}
   <h2>BOMBEROS:</h2>
   
   {% if bomberos %}
@@ -84,7 +84,7 @@
   {% else %}
     <h3>No bomberos activos</h3>
   {% endif %}
-</div>
+{% comment %} </div> {% endcomment %}
 
 <div class="jumbotron card" >
     <div class="row">
