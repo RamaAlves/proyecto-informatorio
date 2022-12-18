@@ -1,0 +1,29 @@
+.link-form {
+    font-size: 0.75rem;
+    text-decoration: none;
+    color: #040404;
+    
+}
+    
+    
+.link-form:hover {
+    color: #f0ffff;
+}
+.card-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80vh;
+}
+.card{
+    background-color:#9C9DA2 ;
+}
+.card-form-reestablecer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 80vh;
+}
