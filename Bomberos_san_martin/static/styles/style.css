@@ -123,7 +123,7 @@ h4{
 
 .btn-twitter{
   background-color: var(--boton-twitter);
-  padding:1px 5px;
+  padding:0px 5px;
 }
 .btn-twitter:hover{
   background-color: var(--boton-twitter);
