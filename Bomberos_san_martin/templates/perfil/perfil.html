@@ -98,7 +98,7 @@
     <div class="jumbotron traslucido">
     </div>
     {% else %}
-    <div class="jumbotron card row g-2 " style="padding: 40px; opacity:90%;">
+    <div class="jumbotron card row g-2 ">
         <ul class="list-group ">
             <li class="list-group-item"><strong>Usuario:</strong></li>
             <li class="list-group-item">{{user.username}}</li>
@@ -116,7 +116,7 @@
             <li class="list-group-item">{{user.last_name}}</li>
         </ul> {% endcomment %}
         <div class="d-grid gap-2 ">
-            <a href="{% url 'blog:password_change' %}" class="btn btn-outline-dark" type="button">Cambiar Contraseña</a>
+            <a href="{% url 'blog:password_change' %}" class="btn btn-dark" type="button">Cambiar Contraseña</a>
         </div>
     </div>
     {% endif %}
