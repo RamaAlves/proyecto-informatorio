@@ -45,9 +45,11 @@
               <div class="col-sm-8">
                 <select class="form-select" aria-label="Seleccione una categoria"  id="categoriaSelect" name="categoria"  value={{request.GET.categoria}}>
                   <option selected value='Seleccione una categoria'>{{request.GET.categoria}}</option>
-                  {% for c in cat %}
-                  <option value="{{c.nombre}}">{{c.nombre}}</option>
-                  {% endfor %}
+                  {% if cat %}
+                    {% for c in cat %}
+                    <option value="{{c.nombre}}">{{c.nombre}}</option>
+                    {% endfor %}
+                  {% endif %}
                 </select>
               </div>
             </div>

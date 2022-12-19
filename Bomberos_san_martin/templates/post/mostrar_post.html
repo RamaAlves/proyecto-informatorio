@@ -3,11 +3,11 @@
 {% load social_share %}
 {% comment %} headers {% endcomment %}
 {% block metas %}
-<meta property="og:url"                content="http://127.0.0.1:8000/mostrar_post/{{post.id}}" />
+<meta property="og:url"                content="http://info2022.pythonanywhere.com/mostrar_post/{{post.id}}" />
 <meta property="og:type"               content="website" />
-<meta property="og:title"              content="title"/>
-<meta property="og:description"        content={{post.resumen}} />
-<meta property="og:image"              content={{post.imagen.url}} />
+<meta property="og:title"              content="{{post.titulo}}" />
+<meta property="og:description"        content="{{post.resumen}}" />
+<meta property="og:image"              content="{{post.imagen.url}}" />
 {% endblock metas %}
 {% block styles %}{% endblock %}
 
@@ -18,7 +18,7 @@
 {% block content %}
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v15.0" nonce="4ypdCCoX"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v15.0" nonce="BDc6dnBs"></script>
 {% comment %} <div class="jumbotron" style="padding: 40px;">
     <h1>Blog</h1>
 </div> {% endcomment %}
@@ -36,7 +36,7 @@
                     <p class="card-text">{{post.texto}}</p>
                     <!-- Your share button code -->
                     <div class="d-grid gap-2 d-md-block">
-                      <div class="fb-share-button btn" data-href="http://127.0.0.1:8000/mostrar_post/{{post.id}}" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fmostrar_post%2F12&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div>
+                      <div class="fb-share-button" data-href="http://info2022.pythonanywhere.com/mostrar_post/{{post.id}}" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Finfo2022.pythonanywhere.com%2Fmostrar_post%2F{{post.id}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div>
                       {% comment %} <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A8000%2Fmostrar_post%2F{{post.id}}&layout=button&size=large&width=103&height=28&appId" width="103" height="28" style="border:none;overflow:hidden" 
                       scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                       {% endcomment %} 
@@ -101,7 +101,7 @@
     <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
     </noscript>
     {% else %}
-      <p>Para mostrar ver los comentarios, comentar y compartir debes loguearte</p>
+      <p>Para mostrar comentar y ver los comentarios primero debes loguearte</p>
     {% endif %}
 {% else %}
   <h1>Error al cargar el post</h1>
