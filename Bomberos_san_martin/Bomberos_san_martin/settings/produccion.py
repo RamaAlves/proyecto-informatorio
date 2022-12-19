@@ -4,9 +4,8 @@ DATABASES={
     'default':{
         'ENGINE':'django.db.backends.mysql',
         'NAME': 'blogdb',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '',
+        'USER': 'info2022',
+        'PASSWORD': 'etapa2info',
+        'HOST': 'info2022.mysql.pythonanywhere-services.com',
     },
 }

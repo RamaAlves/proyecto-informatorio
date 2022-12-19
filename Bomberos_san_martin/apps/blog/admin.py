@@ -15,11 +15,12 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'resumen', 'imagen', 'categoria', 'publicado', 'fecha_creacion', 'usuario')
     list_filter = ('categoria__nombre', 'publicado')
 
-class ComentarioAdmin(admin.ModelAdmin):
-    ordering = ('id', 'id_post', 'autor', 'texto', 'publicado', 'fecha_creacion')
-    search_fields = ('id', 'id_post__titulo', 'autor__username', 'texto', 'publicado', 'fecha_creacion')
-    list_display = ('id', 'id_post', 'autor', 'texto', 'publicado', 'fecha_creacion')
-    list_filter = ('id_post__titulo', 'autor','publicado', 'fecha_creacion')
+# habilitar para usar comentarios nativos
+# class ComentarioAdmin(admin.ModelAdmin):
+#     ordering = ('id', 'id_post', 'autor', 'texto', 'publicado', 'fecha_creacion')
+#     search_fields = ('id', 'id_post__titulo', 'autor__username', 'texto', 'publicado', 'fecha_creacion')
+#     list_display = ('id', 'id_post', 'autor', 'texto', 'publicado', 'fecha_creacion')
+#     list_filter = ('id_post__titulo', 'autor','publicado', 'fecha_creacion')
 
 class EventoAdmin(admin.ModelAdmin):
     ordering = ('id', 'titulo', 'descripcion', 'fecha_creacion', 'usuario__username')
@@ -37,6 +38,7 @@ class BomberoAdmin(admin.ModelAdmin):
 
 admin.site.register(Categoria, CategoriaAdmin)
 admin.site.register(Post, PostAdmin)
-admin.site.register(Comentario, ComentarioAdmin)
 admin.site.register(Evento, EventoAdmin)
 admin.site.register(Bombero, BomberoAdmin)
+# habilitar para usar comentarios nativos
+#admin.site.register(Comentario, ComentarioAdmin)

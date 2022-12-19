@@ -34,21 +34,22 @@ class Post(models.Model):
     def __str__(self) :
         return str(self.titulo)
 
-class Comentario(models.Model):
-    id = models.AutoField(primary_key=True)
-    id_post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    autor = models.ForeignKey(User, on_delete=models.CASCADE)
-    texto = models.TextField(max_length=500, blank=False, null=False)
-    publicado = models.BooleanField(default=True)
-    fecha_creacion = models.DateTimeField(auto_now_add=True)
+# habilitar para usar comentarios nativos
+# class Comentario(models.Model):
+#     id = models.AutoField(primary_key=True)
+#     id_post = models.ForeignKey(Post, on_delete=models.CASCADE)
+#     autor = models.ForeignKey(User, on_delete=models.CASCADE)
+#     texto = models.TextField(max_length=500, blank=False, null=False)
+#     publicado = models.BooleanField(default=True)
+#     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        verbose_name_plural = 'Comentarios'
-        constraints = [
-        models.UniqueConstraint(fields=['id', 'id_post'], name='unique_comentario')
-        ]
-    def __str__(self) :
-        return str(self.texto)
+#     class Meta:
+#         verbose_name_plural = 'Comentarios'
+#         constraints = [
+#         models.UniqueConstraint(fields=['id', 'id_post'], name='unique_comentario')
+#         ]
+#     def __str__(self) :
+#         return str(self.texto)
 
 class Evento(models.Model):
     id = models.AutoField(primary_key=True)

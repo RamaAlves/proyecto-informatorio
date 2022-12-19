@@ -20,10 +20,11 @@ class RegistrarForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
         help_texts = {k:"" for k in fields}
 
-class ComentarioForm(forms.ModelForm):
-    class Meta:
-        model = Comentario
-        fields = ['texto']
+# habilitar en uso de comentarios nativos
+# class ComentarioForm(forms.ModelForm):
+#     class Meta:
+#         model = Comentario
+#         fields = ['texto']
 
 class CategoriaForm(forms.ModelForm):
     class Meta:

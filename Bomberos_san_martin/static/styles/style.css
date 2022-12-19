@@ -10,6 +10,7 @@
   --font-color-active:#3a3939;
   --bg-evento:#5f5e5e;
   --boton-twitter:#00ACEE;
+  --color-notificacion:#0d0d0d;
 }
 
 body{
@@ -160,6 +161,14 @@ h4{
 }
 .card-usuario-evento{
   font-size:0.75rem;
+}
+.color-texto{
+  color:var(--font-color);
+  background-color:var(--bg-card)
+}
+
+.notification {
+  color:var(--color-notificacion)
 }
 @media (max-width: 990px) {
   .form-buscador{

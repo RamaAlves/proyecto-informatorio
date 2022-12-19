@@ -5,8 +5,8 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.db.models import Q
 from django.contrib import messages
 
-from .models import Post, Categoria, Comentario, Evento, Bombero
-from .forms import PostForm, RegistrarForm, ComentarioForm, CategoriaForm, EventoForm, BomberoForm
+from .models import Post, Categoria, Evento, Bombero#, Comentario
+from .forms import PostForm, RegistrarForm, CategoriaForm, EventoForm, BomberoForm#, ComentarioForm
 
 # Create your views here.
 def index(request):
@@ -105,26 +105,32 @@ def crearPost(request):
 def mostrarPost(request, pk):
     """ se muestra el template con un posteo y sus comentarios """
     post = get_object_or_404(Post, pk=pk)
-    comentario_form = ComentarioForm()
 
-    if request.method == 'POST':
-        comentario_form = ComentarioForm(request.POST or None)
-        if comentario_form.is_valid():
-            comentario = Comentario()
+    # habilitar para usar comentarios nativos
+    # comentario_form = ComentarioForm()
 
-            comentario.texto = comentario_form.cleaned_data['texto']
-            comentario.autor = request.user
-            comentario.id_post = post
+    # if request.method == 'POST':
+    #     comentario_form = ComentarioForm(request.POST or None)
+    #     if comentario_form.is_valid():
+    #         comentario = Comentario()
 
-            print(comentario.id_post)
-            comentario.save()
-            comentario_form = ComentarioForm()
-            #return redirect('blog:mostrar_post'+'/'+str(pk))
+    #         comentario.texto = comentario_form.cleaned_data['texto']
+    #         comentario.autor = request.user
+    #         comentario.id_post = post
 
-    comentarios = Comentario.objects.filter(
-        Q(id_post=pk)
-        ).order_by('-fecha_creacion')
-    context ={'post':post, 'comentarios':comentarios, 'comentario_form':comentario_form}
+    #         print(comentario.id_post)
+    #         comentario.save()
+    #         comentario_form = ComentarioForm()
+    #         #return redirect('blog:mostrar_post'+'/'+str(pk))
+
+    # comentarios = Comentario.objects.filter(
+    #     Q(id_post=pk)
+    #     ).order_by('-fecha_creacion')
+    # # solo habilitar si se usan comentarios nativos
+    # context ={'post':post, 'comentarios':comentarios, 'comentario_form':comentario_form}
+
+    # context solo si se usan comentarios externos
+    context ={'post':post}
     return render(request, 'post/mostrar_post.html', context)
 
 def administrarPosts(request):
@@ -139,22 +145,22 @@ def actualizarPost(request,pk):
     post = get_object_or_404(Post, pk=pk)
     
     if request.method == 'POST':
-        post_form = PostForm(request.POST or None, request.FILES or None)
+        post_form = PostForm(request.POST or None, request.FILES or None, instance=post)
         if post_form.is_valid():
-            post.titulo=post_form.cleaned_data['titulo']
-            post.resumen=post_form.cleaned_data['resumen']
-            post.resumen=post_form.cleaned_data['resumen']
-            post.texto=post_form.cleaned_data['texto']
-            post.imagen=post_form.cleaned_data['imagen']
-            post.categoria=post_form.cleaned_data['categoria']
-            post.usuario=post_form.cleaned_data['usuario']
+            # post.titulo=post_form.cleaned_data['titulo']
+            # post.resumen=post_form.cleaned_data['resumen']
+            # post.resumen=post_form.cleaned_data['resumen']
+            # post.texto=post_form.cleaned_data['texto']
+            # post.imagen=post_form.cleaned_data['imagen']
+            # post.categoria=post_form.cleaned_data['categoria']
+            # post.usuario=post_form.cleaned_data['usuario']
             
             post.save()
             messages.success(request, f"Post: '{post.titulo}' actualizado")
 
             return redirect('blog:administrar_posts')
     else:
-        post_form = PostForm(initial={'titulo':post.titulo, 'resumen':post.resumen, 'texto':post.texto, 'imagen':post.imagen, 'categoria':post.categoria, 'usuario':post.usuario})
+        post_form = PostForm(instance=post)
 
     context = {'post_form': post_form}
     return render(request, 'post/guardar_post.html', context)
@@ -192,15 +198,15 @@ def actualizarCategoria(request,pk):
     categoria = get_object_or_404(Categoria, pk=pk)
     
     if request.method == 'POST':
-        categoria_form = CategoriaForm(request.POST or None)
+        categoria_form = CategoriaForm(request.POST or None, instance=categoria)
         if categoria_form.is_valid():
-            categoria.nombre=categoria_form.cleaned_data['nombre']
+            # categoria.nombre=categoria_form.cleaned_data['nombre']
 
             categoria.save()
             messages.success(request, f"Categoria: '{categoria.nombre}' actualizada.")
             return redirect('blog:administrar_categorias')
     else:
-        categoria_form = CategoriaForm(initial={'nombre':categoria.nombre})
+        categoria_form = CategoriaForm(instance=categoria)
 
     context = {'categoria_form': categoria_form}
     return render(request, 'categoria/guardar_categoria.html', context)
@@ -240,16 +246,16 @@ def actualizarEvento(request,pk):
     evento = get_object_or_404(Evento, pk=pk)
     
     if request.method == 'POST':
-        evento_form = EventoForm(request.POST or None)
+        evento_form = EventoForm(request.POST or None, instance=evento)
         if evento_form.is_valid():
-            evento.titulo=evento_form.cleaned_data['titulo']
-            evento.descripcion=evento_form.cleaned_data['descripcion']
+            # evento.titulo=evento_form.cleaned_data['titulo']
+            # evento.descripcion=evento_form.cleaned_data['descripcion']
 
             evento.save()
-            messages.success(request, f"Evento '{evento.nombre}' actualizado.")
+            messages.success(request, f"Evento '{evento.titulo}' actualizado.")
             return redirect('blog:administrar_eventos')
     else:
-        evento_form = EventoForm(initial={'titulo':evento.titulo, 'descripcion':evento.descripcion})
+        evento_form = EventoForm(instance=evento)
 
     context = {'evento_form': evento_form}
     return render(request, 'evento/guardar_evento.html', context)
