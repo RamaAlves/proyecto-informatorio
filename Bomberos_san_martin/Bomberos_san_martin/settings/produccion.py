@@ -1,5 +1,7 @@
 from .base import *
 
+ALLOWED_HOSTS = ['info2022.pythonanywhere.com']
+
 DATABASES={
     'default':{
         'ENGINE':'django.db.backends.mysql',
