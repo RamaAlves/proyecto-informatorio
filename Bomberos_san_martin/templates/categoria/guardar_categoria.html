@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% comment %} headers {% endcomment %}
-{% block styles %}{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/forms.css' %}">
+{% endblock %}
 
 {% comment %} body {% endcomment %}
 {% comment %} navbar {% endcomment %}
@@ -9,17 +11,17 @@
 {% block banner %}    
 {% endblock banner %}
 {% block content %}
-<div class="card card-transparent">
+    <div class="card-container-form">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <div class="card card-transparent">
-                <h5 class="card-header"></h5>
-                <div class="card-body">
+                <h5 class="card-header">Crear Categoria</h5>
+                <div class="card-body form-flex">
                     {{categoria_form.as_p}}
                 </div>
-                <button type="submit">Guardar</button>
-                <a href="{% url 'blog:index' %}">Cancelar</a>
-            </div>
+                <div class="d-grid gap-2 col-8 mx-auto">
+                    <button type="submit" class="btn btn-dark">Guardar</button>
+                    <a class="btn btn-dark" href="{% url 'blog:perfil' %}">Cancelar</a>
+                </div>
         </form>
     </div>
 {% endblock content %}
