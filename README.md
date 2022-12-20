@@ -11,3 +11,6 @@
 3. activar el entorno virtual creado ```env/Scripts/activate```
 4. instalar los requeriments ```pip install -r requeriments.txt```
 5. dirigirse a la carpeta del proyecto y una ves en ella desde el cmd ejecutar ```python manage.py runserver```
+
+Gestion de las tareas:
+https://trello.com/b/69xhr6o5/tareas
