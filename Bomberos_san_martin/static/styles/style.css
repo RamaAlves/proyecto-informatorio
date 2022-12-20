@@ -11,7 +11,9 @@
   --boton-twitter:#00ACEE;
   --color-notificacion:#0d0d0d;
   --bg-evento: rgb(136,0,0);
-  --bg-evento-gradiente: linear-gradient(90deg, rgba(136,0,0,1) 0%, rgba(220,53,69,1) 100%);
+  --bg-evento-gradiente: linear-gradient(90deg, rgba(136,0,0,1) 0%, rgb(220, 53, 69) 100%);
+  --acento-footer:#dc3545;
+  --bg-base-footer:#2e2e2e;
 }
 
 body{
@@ -171,7 +173,15 @@ h4{
   color:var(--font-color);
   background-color:var(--bg-card)
 }
-
+.color-footer {
+  background-color: var(--bg-page);
+}
+.color-acento-footer{
+  background-color: var(--acento-footer);
+}
+.color-base-footer{
+  background-color: var(--bg-base-footer);
+}
 .notification {
   color:var(--color-notificacion)
 }
