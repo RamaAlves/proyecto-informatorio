@@ -11,6 +11,3 @@ DATABASES={
         'HOST': 'info2022.mysql.pythonanywhere-services.com',
     },
 }
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
