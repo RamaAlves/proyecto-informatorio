@@ -16,6 +16,10 @@
   --bg-base-footer:#2e2e2e;
 }
 
+html{
+  height: 100%;
+}
+
 body{
   background: var(--bg-page);
   font-family: 'Inter', sans-serif;
