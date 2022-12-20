@@ -35,7 +35,7 @@
                     <p class="card-text"><small class="text-muted-custom">{{post.categoria.nombre}}</small></p>
                     <p class="card-text">{{post.texto}}</p>
                     <!-- Your share button code -->
-                    <div class="d-grid gap-2">
+                    <div class="d-flex justify-content-end align-items-start">
                       <button type="button" class="btn fb-share-button" data-href="http://info2022.pythonanywhere.com/mostrar_post/{{post.id}}" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Finfo2022.pythonanywhere.com%2Fmostrar_post%2F{{post.id}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></button>
                       {% comment %} <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A8000%2Fmostrar_post%2F{{post.id}}&layout=button&size=large&width=103&height=28&appId" width="103" height="28" style="border:none;overflow:hidden" 
                       scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
