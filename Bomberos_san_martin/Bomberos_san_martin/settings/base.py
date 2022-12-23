@@ -124,7 +124,7 @@ STATICFILES_DIRS= [STATIC_DIRS,]
 MEDIA_URL= '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media')
 
-LOGIN_REDIRECT_URL= 'blog:perfil'
+LOGIN_REDIRECT_URL= 'blog:index'
 LOGOUT_REDIRECT_URL= 'blog:index'
 
 # Default primary key field type
