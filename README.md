@@ -2,6 +2,14 @@
 
 ### Desarrollo de un blog para los bomberos de la localidad de San Martin como proyecto final de la etapa 2 del informatorio
 
+#### video demo del Blog:
+![video demosatracion del blog](https://github.com/RamaAlves/proyecto-informatorio/tree/main/Demos/blog.mp4)
+
+
+
+https://user-images.githubusercontent.com/110850490/209404047-67a9c0f5-e7eb-4e8b-a318-8c438464148b.mp4
+
+
 
 
 ***para ejecutar el proyecto:***
